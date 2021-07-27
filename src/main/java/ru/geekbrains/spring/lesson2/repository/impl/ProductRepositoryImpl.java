@@ -29,7 +29,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product findById(Long id) {
-        return products.stream().filter(product -> product.getId().equals(id)).findFirst().get();
+        return products.stream().filter(product -> product.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override
