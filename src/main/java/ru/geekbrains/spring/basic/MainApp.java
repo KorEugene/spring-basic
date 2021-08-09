@@ -1,6 +1,5 @@
 package ru.geekbrains.spring.basic;
 
-import org.flywaydb.core.Flyway;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.geekbrains.spring.basic.config.AppConfig;
 import ru.geekbrains.spring.basic.service.CartService;
@@ -16,15 +15,10 @@ public class MainApp {
 
     public static void main(String[] args) {
 
-        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5435/cloud",
-                        "postgres",
-                        "postgrespass")
-                .load();
-        flyway.migrate();
-
         context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         cartService = context.getBean(CartService.class);
+
         while (true) {
             System.out.println("Type \"help\" for get available commands list. Waiting for command: ");
             String command = scanner.nextLine();

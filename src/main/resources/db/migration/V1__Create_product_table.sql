@@ -1,9 +1,9 @@
-CREATE TABLE products (
-id BIGSERIAL PRIMARY KEY,
-title VARCHAR(255) NOT NULL UNIQUE,
-price INTEGER NOT NULL
+create table if not exists products (
+id bigserial primary key,
+title varchar(255) not null unique,
+price integer not null
 );
-INSERT INTO products (title, price) VALUES
+insert into products (title, price) values
 ('orange', 100),
 ('apple', 200),
 ('grapes', 300),
