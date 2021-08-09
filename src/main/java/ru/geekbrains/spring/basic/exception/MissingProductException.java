@@ -1,4 +1,4 @@
-package ru.geekbrains.spring.lesson2.exception;
+package ru.geekbrains.spring.basic.exception;
 
 public class MissingProductException extends Exception {
 

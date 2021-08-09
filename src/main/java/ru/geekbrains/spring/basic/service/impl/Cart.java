@@ -1,12 +1,12 @@
-package ru.geekbrains.spring.lesson2.service.impl;
+package ru.geekbrains.spring.basic.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import ru.geekbrains.spring.lesson2.exception.MissingProductException;
-import ru.geekbrains.spring.lesson2.model.Product;
-import ru.geekbrains.spring.lesson2.repository.ProductRepository;
-import ru.geekbrains.spring.lesson2.service.CartService;
+import ru.geekbrains.spring.basic.exception.MissingProductException;
+import ru.geekbrains.spring.basic.model.Product;
+import ru.geekbrains.spring.basic.service.CartService;
+import ru.geekbrains.spring.basic.service.ProductsService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Cart implements CartService {
     private static Long UUID = 0L;
 
     private final Long id;
-    private ProductRepository productRepository;
+    private ProductsService productsService;
     private final List<Product> productList;
 
     public Cart() {
@@ -27,13 +27,13 @@ public class Cart implements CartService {
     }
 
     @Autowired
-    public void setProductRepository(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public void setProductsService(ProductsService productsService) {
+        this.productsService = productsService;
     }
 
     @Override
     public void addProduct(Long id) throws MissingProductException {
-        Product product = productRepository.findById(id);
+        Product product = productsService.findById(id);
         if (product != null) {
             productList.add(product);
         } else {

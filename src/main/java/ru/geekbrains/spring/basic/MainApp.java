@@ -1,8 +1,9 @@
-package ru.geekbrains.spring.lesson2;
+package ru.geekbrains.spring.basic;
 
+import org.flywaydb.core.Flyway;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.geekbrains.spring.lesson2.config.AppConfig;
-import ru.geekbrains.spring.lesson2.service.CartService;
+import ru.geekbrains.spring.basic.config.AppConfig;
+import ru.geekbrains.spring.basic.service.CartService;
 
 import java.util.Scanner;
 
@@ -14,6 +15,13 @@ public class MainApp {
     private static boolean interrupt = false;
 
     public static void main(String[] args) {
+
+        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5435/cloud",
+                        "postgres",
+                        "postgrespass")
+                .load();
+        flyway.migrate();
+
         context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         cartService = context.getBean(CartService.class);

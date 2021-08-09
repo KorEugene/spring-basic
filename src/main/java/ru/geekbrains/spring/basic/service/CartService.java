@@ -1,8 +1,8 @@
-package ru.geekbrains.spring.lesson2.service;
+package ru.geekbrains.spring.basic.service;
 
 import org.springframework.stereotype.Component;
-import ru.geekbrains.spring.lesson2.exception.MissingProductException;
-import ru.geekbrains.spring.lesson2.model.Product;
+import ru.geekbrains.spring.basic.model.Product;
+import ru.geekbrains.spring.basic.exception.MissingProductException;
 
 import java.util.List;
 
