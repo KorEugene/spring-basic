@@ -6,11 +6,12 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "productList")
 @Entity
 @Table(name = "customers")
 public class Customer {
@@ -23,7 +24,11 @@ public class Customer {
     @Column(name = "full_name")
     private String fullName;
 
-    public Customer(String fullName) {
-        this.fullName = fullName;
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "customers_products",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private List<Product> productList;
 }

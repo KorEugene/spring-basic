@@ -27,18 +27,20 @@ public class ProductsService {
         return productDao.findById(id);
     }
 
-    public void save(Product product) {
-        productDao.saveOrUpdate(product);
-    }
 
-    public void deleteById(Long id) {
-        productDao.deleteById(id);
-    }
 
-    public void changeProductPrice(Long id, String action) {
-        Product product = findById(id);
-        int productCurrentPrice = product.getPrice();
-        product.setPrice(action.equals("increment") ? ++productCurrentPrice : --productCurrentPrice);
-        save(product);
-    }
+//    public void save(Product product) {
+//        productDao.saveOrUpdate(product);
+//    }
+//
+//    public void deleteById(Long id) {
+//        productDao.deleteById(id);
+//    }
+//
+//    public void changeProductPrice(Long id, String action) {
+//        Product product = findById(id);
+//        int productCurrentPrice = product.getPrice();
+//        product.setPrice(action.equals("increment") ? ++productCurrentPrice : --productCurrentPrice);
+//        save(product);
+//    }
 }
