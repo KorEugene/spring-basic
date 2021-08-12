@@ -34,9 +34,4 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "customer_id")
     )
     private List<Customer> customerList;
-
-    public Product(String title, int price) {
-        this.title = title;
-        this.price = price;
-    }
 }

@@ -50,6 +50,7 @@ public class MainApp {
                 break;
             case "help":
                 printHelp();
+                break;
 //            case "list":
 //                System.out.println("Cart " + cartService.getCartId() + ":" + cartService.getAll());
 //                break;
@@ -100,7 +101,9 @@ public class MainApp {
 //        System.out.println("remove <id> - remove product from cart, where <id> is product id");
 //        System.out.println("new - get new cart. Old cart become unavailable");
         System.out.println("customer <id> - get the customer by <id> with his products");
+        System.out.println("customers - list all customers");
         System.out.println("product <id> - get the product by <id> with his customers who bought it");
+        System.out.println("products - list all products");
         System.out.println("exit - close app");
         System.out.println("********************");
     }
