@@ -74,10 +74,18 @@ public class MainApp {
                 System.out.println("customer: " + customer.toString());
                 System.out.println("customer's products: " + customer.getProductList());
                 break;
+            case "customers":
+                System.out.println("All customers: ");
+                System.out.println(customersService.findAll());
+                break;
             case "product":
                 Product product = productsService.findById(Long.valueOf(args[1]));
                 System.out.println("product: " + product.toString());
-                System.out.println("buyers who bought the product: " + product.getCustomerList());
+                System.out.println("customer who bought the product: " + product.getCustomerList());
+                break;
+            case "products":
+                System.out.println("All products: ");
+                System.out.println(productsService.findAll());
                 break;
             default:
                 throw new Exception("Wrong command: " + command);

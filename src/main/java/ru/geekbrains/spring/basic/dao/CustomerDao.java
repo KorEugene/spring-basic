@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.geekbrains.spring.basic.model.Customer;
 
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -22,6 +23,8 @@ public class CustomerDao {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
             Customer customer = session.get(Customer.class, id);
+            TypedQuery<Customer> query = session.createQuery("select c from Customer c join fetch c.productList", Customer.class);
+            query.getResultList();
             session.getTransaction().commit();
             return customer;
         }

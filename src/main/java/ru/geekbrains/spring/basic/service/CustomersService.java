@@ -27,15 +27,11 @@ public class CustomersService {
         return customerDao.findById(id);
     }
 
+    public void save(Customer customer) {
+        customerDao.saveOrUpdate(customer);
+    }
 
-
-//    public void save(Customer customer) {
-//        customerDao.saveOrUpdate(customer);
-//    }
-//
-//    public void deleteById(Long id) {
-//        customerDao.deleteById(id);
-//    }
-
-
+    public void deleteById(Long id) {
+        customerDao.deleteById(id);
+    }
 }
