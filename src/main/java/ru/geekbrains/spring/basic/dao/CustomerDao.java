@@ -4,57 +4,57 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.geekbrains.spring.basic.model.Product;
+import ru.geekbrains.spring.basic.model.Customer;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-public class ProductDao {
+public class CustomerDao {
 
     private SessionFactory sessionFactory;
 
     @Autowired
-    public ProductDao(SessionFactory sessionFactory) {
+    public CustomerDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    public Product findById(Long id) {
+    public Customer findById(Long id) {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            Product product = session.get(Product.class, id);
-            TypedQuery<Product> query = session.createQuery("select p from Product p join fetch p.customerList", Product.class);
+            Customer customer = session.get(Customer.class, id);
+            TypedQuery<Customer> query = session.createQuery("select c from Customer c join fetch c.productList", Customer.class);
             query.getResultList();
             session.getTransaction().commit();
-            return product;
+            return customer;
         }
     }
 
-    public List<Product> findAll() {
+    public List<Customer> findAll() {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            List<Product> products = session.createQuery("select p from Product p", Product.class).getResultList();
+            List<Customer> customers = session.createQuery("select c from Customer c", Customer.class).getResultList();
             session.getTransaction().commit();
-            return products;
+            return customers;
         }
     }
 
     public void deleteById(Long id) {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            session.createQuery("delete from Product p where p.id = :id")
+            session.createQuery("delete from Customer c where c.id = :id")
                     .setParameter("id", id)
                     .executeUpdate();
             session.getTransaction().commit();
         }
     }
 
-    public Product saveOrUpdate(Product product) {
+    public Customer saveOrUpdate(Customer customer) {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            session.saveOrUpdate(product);
+            session.saveOrUpdate(customer);
             session.getTransaction().commit();
-            return product;
+            return customer;
         }
     }
 }

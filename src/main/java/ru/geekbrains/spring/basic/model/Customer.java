@@ -11,27 +11,24 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = "customerList")
+@ToString(exclude = "productList")
 @Entity
-@Table(name = "products")
-public class Product {
+@Table(name = "customers")
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "title")
-    private String title;
-
-    @Column(name = "price")
-    private int price;
+    @Column(name = "full_name")
+    private String fullName;
 
     @ManyToMany
     @JoinTable(
             name = "customers_products",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "customer_id")
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-    private List<Customer> customerList;
+    private List<Product> productList;
 }

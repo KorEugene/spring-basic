@@ -35,10 +35,10 @@ public class ProductsService {
         productDao.deleteById(id);
     }
 
-    public void changeProductPrice(Long id, String action) {
-        Product product = findById(id);
-        int productCurrentPrice = product.getPrice();
-        product.setPrice(action.equals("increment") ? ++productCurrentPrice : --productCurrentPrice);
-        save(product);
-    }
+//    public void changeProductPrice(Long id, String action) {
+//        Product product = findById(id);
+//        int productCurrentPrice = product.getPrice();
+//        product.setPrice(action.equals("increment") ? ++productCurrentPrice : --productCurrentPrice);
+//        save(product);
+//    }
 }
